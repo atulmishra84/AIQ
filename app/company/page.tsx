@@ -1,0 +1,1 @@
+export default function Page(){return(<div className='container py-16'><h1 className='text-3xl font-bold'>Company</h1><p className='mt-2 text-slate-300 max-w-2xl'>We build policy-first security for AI and Agentic systems with a focus on compliance, privacy, and post-quantum readiness.</p></div>);}

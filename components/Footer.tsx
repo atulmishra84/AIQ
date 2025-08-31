@@ -1,0 +1,1 @@
+export default function Footer(){return(<footer className="border-t border-white/10 py-8 text-center text-xs text-slate-500">© {new Date().getFullYear()} AIQ Security • Built for trustworthy AI</footer>);}

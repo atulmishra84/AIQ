@@ -1,0 +1,1 @@
+export default function Page(){return(<div className='container py-16'><h1 className='text-3xl font-bold'>Docs</h1><p className='mt-2 text-slate-300'>Coming soon: SDKs, policy packs (OPA/Rego & YAML), deployment guides.</p></div>);}

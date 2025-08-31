@@ -1,0 +1,12 @@
+version: 1
+consent:
+  required: true
+  header: "x-consent"
+redaction:
+  pii_patterns:
+    email: "(?i)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}"
+    phone: "(?i)\+?\d[\d\s().-]{7,}\d"
+    secret: "(?i)(api_key|token|secret)\s*[:=]\s*[a-z0-9-_]{16,}"
+blocking:
+  deny_if_no_consent: true
+  deny_if_contains_secret: true

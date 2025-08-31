@@ -1,0 +1,11 @@
+{
+  "primary": "#27E5FF",
+  "primarySoft": "#1AD3EA",
+  "accent": "#8BC6FF",
+  "bg": "#0B1220",
+  "surface": "#0E1729",
+  "text": "#C9D4F2",
+  "success": "#2BE4A2",
+  "warning": "#FFC857",
+  "danger": "#FF6B6B"
+}

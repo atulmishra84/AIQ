@@ -1,0 +1,57 @@
+{
+  "items": [
+    {
+      "slug": "ai-secure-compliance",
+      "title": "AI Secure Compliance",
+      "blurb": "Continuous controls for AI/ML systems: discovery, risk scoring, policy-as-code, and automated evidence.",
+      "features": [
+        "Policy-as-Code",
+        "Model & Agent Inventory",
+        "Drift Alerts",
+        "Automated Evidence"
+      ],
+      "frameworks": [
+        "HIPAA",
+        "HITRUST",
+        "NIST AI RMF",
+        "ISO 27001",
+        "SOC 2",
+        "CSA AI",
+        "OWASP AI"
+      ]
+    },
+    {
+      "slug": "datasec",
+      "title": "DataSec",
+      "blurb": "DLP and governance for LLMs and data pipelines. Classify, redact, and gate sensitive flows across prompts and vector stores.",
+      "features": [
+        "PII/PHI Detection",
+        "Token-level Redaction",
+        "Secret Scanning",
+        "Usage Guardrails"
+      ]
+    },
+    {
+      "slug": "agent-identity",
+      "title": "AI Agent Identity Management",
+      "blurb": "Issue, bind, and rotate identities for Agentic AI. Strong authN/Z, scoped capabilities, and verifiable audit.",
+      "features": [
+        "Agent Passports",
+        "Scoped Keys",
+        "Step-up Auth",
+        "Tamper-evident Logs"
+      ]
+    },
+    {
+      "slug": "advanced-iam",
+      "title": "Advanced IAM System",
+      "blurb": "Modern IAM with policy graph, just-in-time access, and post-quantum crypto options.",
+      "features": [
+        "ABAC/PBAC",
+        "JIT Access",
+        "Policy Graph",
+        "PQ Crypto Ready"
+      ]
+    }
+  ]
+}

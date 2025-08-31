@@ -1,0 +1,6 @@
+import { NextRequest, NextResponse } from 'next/server'; import { enforceConsent, redactPII } from '@/lib/policy';
+export async function POST(req:NextRequest){ const consent=enforceConsent(req.headers); if(!consent.allowed) return NextResponse.json({ok:false,reason:consent.reason},{status:403});
+  const payload=await req.json().catch(()=>({})); const {redacted,blocked}=redactPII(payload); if(blocked) return NextResponse.json({ok:false,reason:'Secret detected'},{status:400});
+  const measurement_id=process.env.GA4_MEASUREMENT_ID; const api_secret=process.env.GA4_API_SECRET; if(!measurement_id||!api_secret) return NextResponse.json({ok:false,reason:'Server not configured'},{status:500});
+  const url=`https://www.google-analytics.com/mp/collect?measurement_id=${measurement_id}&api_secret=${api_secret}`;
+  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(redacted)}); const ok=res.ok; const text=await res.text(); return NextResponse.json({ok,upstream:text.slice(0,500)}); }

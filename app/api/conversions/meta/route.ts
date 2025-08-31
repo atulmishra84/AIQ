@@ -1,0 +1,6 @@
+import { NextRequest, NextResponse } from 'next/server'; import { enforceConsent, redactPII } from '@/lib/policy';
+export async function POST(req:NextRequest){ const consent=enforceConsent(req.headers); if(!consent.allowed) return NextResponse.json({ok:false,reason:consent.reason},{status:403});
+  const payload=await req.json().catch(()=>({})); const {redacted,blocked}=redactPII(payload); if(blocked) return NextResponse.json({ok:false,reason:'Secret detected'},{status:400});
+  const pixel_id=process.env.META_PIXEL_ID; const access_token=process.env.META_ACCESS_TOKEN; if(!pixel_id||!access_token) return NextResponse.json({ok:false,reason:'Server not configured'},{status:500});
+  const url=`https://graph.facebook.com/v17.0/${pixel_id}/events?access_token=${access_token}`;
+  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(redacted)}); const ok=res.ok; const text=await res.text(); return NextResponse.json({ok,upstream:text.slice(0,500)}); }
