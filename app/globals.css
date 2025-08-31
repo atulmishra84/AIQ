@@ -2,26 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global base */
-:root {
-  color-scheme: dark;
-}
+/* Base */
+:root { color-scheme: dark; }
 html, body {
-  background: #0b1220;   /* brand.bg */
-  color: #c9d4f2;        /* brand.text */
+  background: #0b1220; /* brand.bg */
+  color: #c9d4f2;      /* brand.text */
+  margin: 0;
 }
 
-/* Simple utilities */
-.container { @apply mx-auto max-w-7xl px-6; }
-
-/* Wrap all @apply compositions in a layer */
-@layer components {
-  .card { @apply rounded-3xl border border-white/10 bg-white/5 p-6; }
-  /* IMPORTANT: escape slashes in @apply */
-  .badge { @apply text-[10px] rounded-lg px-2 py-1 text-brand-cyan ring-1 ring-brand-cyan\/40 bg-brand-cyan\/20; }
-  .btn { @apply inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium; }
-  .btn-primary { @apply bg-brand-cyan text-slate-900 shadow-glow hover:bg-brand-cyanSoft; }
-  .btn-ghost { @apply bg-white/10 ring-1 ring-white/10 hover:bg-white/15; }
+/* Simple container equivalent of Tailwind’s mx-auto max-w-7xl px-6 */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem; /* ~7xl */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-nav a { @apply hover:text-white; }
+/* Card: rounded-3xl border border-white/10 bg-white/5 p-6 */
+.card {
+  border-radius: 1.5rem;              /* rounded-3xl */
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+  padding: 1.5rem;                    /* p-6 */
+}
+
+/* Badge: text-[10px] rounded-lg px-2 py-1 + brand colors and ring */
+.badge {
+  font-size: 10px;
+  line-height: 1;
+  border-radius: 0.5rem;              /* rounded-lg */
+  padding: 0.25rem 0.5rem;            /* py-1 px-2 */
+  color: #27e5ff;                     /* text-brand-cyan */
+  background: rgba(39,229,255,0.20);  /* bg-brand-cyan/20 */
+  box-shadow: 0 0 0 1px rgba(39,229,255,0.40); /* ring-1 ring-brand-cyan/40 */
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.75rem;             /* rounded-xl */
+  padding: 0.5rem 1rem;               /* py-2 px-4 */
+  font-size: 0.875rem;                /* text-sm */
+  font-weight: 500;                   /* font-medium */
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #27e5ff;                /* brand-cyan */
+  color: #0f172a;                     /* slate-900 */
+  box-shadow: 0 10px 30px rgba(39,229,255,0.25); /* shadow-glow */
+}
+.btn-primary:hover { background: #1ad3ea; }      /* brand-cyanSoft */
+
+.btn-ghost {
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.10);  /* ring-1 ring-white/10 */
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.15); }
+
+nav a:hover { color: #ffffff; }
